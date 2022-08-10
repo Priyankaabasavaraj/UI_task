@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<head>
+    <title> Registration Form</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        function passValues(){
+            var firsName =  document.getElementById("fname").value;
+            var lastName =  document.getElementById("lname").value;
+            var age =  document.getElementById("age").value;
+            var address =  document.getElementById("add").value;
+            var number =  document.getElementById("mobile").value;
+            var emailid =  document.getElementById("mail").value;
+            var dob =  document.getElementById("dob").value;
+
+            localStorage.setItem("firstNameValue", firsName);
+            localStorage.setItem("lastNameValue", lastName);
+            localStorage.setItem("ageValue", age);
+            localStorage.setItem("addressValue", address);
+            localStorage.setItem("numberValue", number);
+            localStorage.setItem("emailValue", emailid);
+            localStorage.setItem("dobValue", dob);
+            return false;
+        }
+    </script>
+    
+</head>
+<body>
+    <div id="form">
+        <center>
+        
+             <h1> Registration Form</h1>
+        
+        <form action="view_details.html" name="myform" id="form" method="POST" onsubmit="return validation()">
+            <table align="center" cellpadding="15">
+                <tr>
+                    <td>
+                        <label for="fname">First Name:</label>
+                        <input type="text" id="fname" name="fname">
+                        <li class="rq">*Enter alphabets only</li>
+                        <span id="fnamee"></span>
+                    </td> 
+                </tr>
+                <tr>
+                    <td>      
+                        <label for="lname">Last Name:</label>
+                        <input type="text" id="lname" name="lname">
+                        <li class="rq">*Enter alphabets only</li>
+                        <span id="lnamee"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>      
+                        <label for="dob">DOB:</label>
+                        <input type="date" id="dob" name="dob">
+                        <span id="dobb"></span>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>   
+                        <label for="age">Age:</label>
+                        <input type="age" id="age" name="age" required>
+                        <li class="rq">*Enter valid age </li>
+                        <span id="agee"></span>
+                    </td>
+                </tr> 
+                <tr>
+                    <td>     
+                        <label for="mail"> E-mail ID:</label>
+                        <input type="email" id="mail" name="mail">
+                        <span id="mail"></span>
+                    </td>
+                </tr> 
+                <tr>
+                    <td> 
+                        <label for="mobile">Mobile Number:</label>
+                        <input type="Mobile-Number" id="mobile" name="mobile" required>
+                        <li class="rq">*Enter digits only</li>
+                        <span id="mobilee"></span>
+                    </tr>
+                </td> 
+                
+                
+                <tr>
+                    <td> 
+                        <label for="add">Address:</label>
+                        <textarea id="add" name="add" cols="65" rows="5"></textarea></td>
+                        <span id="addr"></span>
+                    </td>
+                </tr>   
+                <tr>
+                    <td>  
+                            <input type="Submit" id="btn" onclick="passValues();"  />
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <script type="text/javascript">
+       
+        function validation(){
+            var first_name = document.forms["myform"]["fname"].value;
+            var last_name = document.forms["myform"]["lname"].value;
+            var mobile = document.forms["myform"]["mobile"].value;
+            var age = document.forms["myform"]["age"].value;
+            var num = document.forms["myform"]["mobile"].value;
+            var letter=/^[a-zA-Z]*$/;
+            // validation for first name
+            if(!isNaN(first_name))
+            {
+                alert("first name should be only alphabets");
+                return false;
+            }
+            //vlidation for last name
+            
+            if(!first_name.match(letter))
+            {
+                alert("First name should contain only alphabets");
+                return false;
+            }
+
+            if(!isNaN(last_name))
+            {
+                alert("last name should be only alphabets");
+                return false;
+            }
+            if(isNaN(mobile))
+            {
+                alert("please enter the numbers only in the box");
+                return false;
+            }
+            if(age>100 || age<1 || isNaN(age))
+            {
+                alert("The age must be a number 1 and 100");
+                return false;
+            }
+            if(num.length!=10)
+            {
+                alert("Phone number must be 10 digits");
+                return false;
+            }
+        }   
+       
+    </script>
+
+</body> 
+</html>
